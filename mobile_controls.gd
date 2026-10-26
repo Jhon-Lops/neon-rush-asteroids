@@ -3,7 +3,7 @@ extends Control
 signal movement_changed(direction: Vector2)
 signal shoot_changed(pressed: bool)
 
-@export var enabled_on_desktop := false
+@export var enabled_on_desktop := true
 
 var movement := Vector2.ZERO
 var shooting := false
@@ -14,6 +14,8 @@ var joystick_knob := Vector2.ZERO
 var joystick_radius := 86.0
 var shoot_center := Vector2.ZERO
 var shoot_radius := 66.0
+var mouse_joystick_active := false
+var mouse_shoot_active := false
 
 func _ready() -> void:
 	set_process_input(true)
@@ -65,6 +67,32 @@ func _input(event: InputEvent) -> void:
 		if drag.index == joystick_touch_id:
 			_update_joystick(drag.position)
 			get_viewport().set_input_as_handled()
+
+	elif event is InputEventMouseButton and enabled_on_desktop:
+		var mouse_button := event as InputEventMouseButton
+		if mouse_button.button_index == MOUSE_BUTTON_LEFT:
+			if mouse_button.pressed and mouse_button.position.distance_to(joystick_center) <= joystick_radius * 1.35:
+				mouse_joystick_active = true
+				_update_joystick(mouse_button.position)
+				get_viewport().set_input_as_handled()
+			elif not mouse_button.pressed and mouse_joystick_active:
+				mouse_joystick_active = false
+				_set_movement(Vector2.ZERO)
+				get_viewport().set_input_as_handled()
+		elif mouse_button.button_index == MOUSE_BUTTON_RIGHT:
+			if mouse_button.pressed and mouse_button.position.distance_to(shoot_center) <= shoot_radius * 1.25:
+				mouse_shoot_active = true
+				_set_shooting(true)
+				get_viewport().set_input_as_handled()
+			elif not mouse_button.pressed and mouse_shoot_active:
+				mouse_shoot_active = false
+				_set_shooting(false)
+				get_viewport().set_input_as_handled()
+
+	elif event is InputEventMouseMotion and enabled_on_desktop and mouse_joystick_active:
+		var motion := event as InputEventMouseMotion
+		_update_joystick(motion.position)
+		get_viewport().set_input_as_handled()
 
 func _update_joystick(position: Vector2) -> void:
 	var offset := position - joystick_center
