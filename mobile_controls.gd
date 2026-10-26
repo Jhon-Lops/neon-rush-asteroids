@@ -30,11 +30,11 @@ func _notification(what: int) -> void:
 
 func _update_layout() -> void:
 	var size := get_viewport_rect().size
-	var scale_factor := clampf(minf(size.x / 960.0, size.y / 540.0), 0.75, 1.5)
-	joystick_radius = 86.0 * scale_factor
-	shoot_radius = 66.0 * scale_factor
-	joystick_center = Vector2(118.0 * scale_factor, size.y - 112.0 * scale_factor)
-	shoot_center = Vector2(size.x - 112.0 * scale_factor, size.y - 112.0 * scale_factor)
+	var scale_factor := clampf(minf(size.x / 960.0, size.y / 540.0), 0.65, 1.25)
+	joystick_radius = 64.0 * scale_factor
+	shoot_radius = 50.0 * scale_factor
+	joystick_center = Vector2(92.0 * scale_factor, size.y - 86.0 * scale_factor)
+	shoot_center = Vector2(size.x - 92.0 * scale_factor, size.y - 86.0 * scale_factor)
 	joystick_knob = joystick_center + movement * joystick_radius * 0.65
 
 func _input(event: InputEvent) -> void:
@@ -126,4 +126,4 @@ func _draw() -> void:
 
 	draw_circle(shoot_center, shoot_radius, shoot_color)
 	draw_arc(shoot_center, shoot_radius, 0.0, TAU, 48, Color(1.0, 0.6, 0.9, 0.9), 3.0)
-	draw_string(ThemeDB.fallback_font, shoot_center - Vector2(22.0, -9.0), "FIRE", HORIZONTAL_ALIGNMENT_LEFT, -1.0, 18, Color.WHITE)
+	draw_string(ThemeDB.fallback_font, shoot_center - Vector2(18.0, -7.0), "FIRE", HORIZONTAL_ALIGNMENT_LEFT, -1.0, 14, Color.WHITE)
