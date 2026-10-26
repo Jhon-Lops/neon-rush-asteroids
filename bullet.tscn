@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://cgyjy43aldqy7"]
+
+[ext_resource type="Script" uid="uid://j085447q4p2y" path="res://bullet.gd" id="1_v7oki"]
+[ext_resource type="AudioStream" path="res://audio/laser.wav" id="2_laser"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g4v7s"]
+size = Vector2(13, 12)
+
+[node name="Bullet" type="Area2D" unique_id=1203846300]
+position = Vector2(0, -1)
+collision_mask = 2
+script = ExtResource("1_v7oki")
+
+[node name="LaserSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_laser")
+autoplay = true
+volume_db = -6.0
+
+[node name="Polygon2D" type="Polygon2D" parent="." unique_id=579892600]
+position = Vector2(158, -1)
+polygon = PackedVector2Array(-164.48409, -4.570211, -164.53644, 6.780402, -152.18906, 6.8325014, -152.18906, -4.5250072)
+uv = PackedVector2Array(-164.48409, -4.570211, -164.70172, 6.9641323, -151.8616, 6.9641323, -152.07922, -5.2230983)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2108605631]
+texture_filter = 1
+shape = SubResource("RectangleShape2D_g4v7s")

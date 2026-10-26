@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://6auru6hekvm4"]
+
+[ext_resource type="Script" uid="uid://2cn0pyir6d7" path="res://asteroid.gd" id="1_u87q6"]
+[ext_resource type="PackedScene" uid="uid://dh75yju3g1adu" path="res://smoke.tscn" id="2_gm5ib"]
+[ext_resource type="Texture2D" uid="uid://juvv7evck657" path="res://Addons/img_asteroids/asteroide_neon_01.png" id="2_p0ukn"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dnuru"]
+custom_solver_bias = 1.0
+
+[node name="Asteroid" type="Area2D" unique_id=1857039242]
+position = Vector2(1, 2)
+collision_layer = 2
+script = ExtResource("1_u87q6")
+smoke_scene = ExtResource("2_gm5ib")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2094658230]
+texture_filter = 1
+texture = ExtResource("2_p0ukn")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1682201550]
+position = Vector2(-2.0000458, -1)
+scale = Vector2(-3.9102583, 3.7949085)
+shape = SubResource("CircleShape2D_dnuru")

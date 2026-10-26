@@ -1,0 +1,178 @@
+[gd_scene format=3 uid="uid://c2iwlgltbvk1k"]
+
+[ext_resource type="Script" uid="uid://b6l4umjmu7okv" path="res://main_menu.gd" id="1_menu"]
+[ext_resource type="Texture2D" uid="uid://blgdsk1d4vgq1" path="res://Addons/img_background/fundo_espacial_neon.png" id="2_background"]
+[ext_resource type="AudioStream" uid="uid://d1mo658e40kvh" path="res://audio/neon_rush_music.wav" id="3_music"]
+
+[node name="MainMenu" type="Control" unique_id=1404067434]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_menu")
+
+[node name="Background" type="TextureRect" parent="." unique_id=100046514]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("2_background")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="Overlay" type="ColorRect" parent="." unique_id=1774772440]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.02, 0.01, 0.12, 0.45)
+
+[node name="Music" type="AudioStreamPlayer" parent="." unique_id=827029840]
+stream = ExtResource("3_music")
+volume_db = -8.0
+autoplay = true
+
+[node name="Title" type="Label" parent="." unique_id=1955755627]
+layout_mode = 0
+offset_left = 270.0
+offset_top = 68.0
+offset_right = 690.0
+offset_bottom = 145.0
+theme_override_colors/font_color = Color(0.35, 0.95, 1, 1)
+theme_override_colors/font_shadow_color = Color(0.8, 0.1, 0.9, 0.8)
+theme_override_constants/shadow_offset_x = 4
+theme_override_constants/shadow_offset_y = 4
+theme_override_font_sizes/font_size = 54
+text = "NEON RUSH"
+horizontal_alignment = 1
+
+[node name="Subtitle" type="Label" parent="." unique_id=610991996]
+layout_mode = 0
+offset_left = 270.0
+offset_top = 140.0
+offset_right = 690.0
+offset_bottom = 175.0
+theme_override_colors/font_color = Color(0.85, 0.75, 1, 1)
+theme_override_font_sizes/font_size = 16
+text = "SOBREVIVA AO INFINITO"
+horizontal_alignment = 1
+
+[node name="Menu" type="VBoxContainer" parent="." unique_id=862957894]
+layout_mode = 0
+offset_left = 350.0
+offset_top = 215.0
+offset_right = 610.0
+offset_bottom = 475.0
+theme_override_constants/separation = 12
+
+[node name="NewGameButton" type="Button" parent="Menu" unique_id=1319048030]
+custom_minimum_size = Vector2(260, 48)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.95, 0.7, 1, 1)
+theme_override_font_sizes/font_size = 22
+text = "NEW GAME"
+
+[node name="ContinueButton" type="Button" parent="Menu" unique_id=2135084218]
+custom_minimum_size = Vector2(260, 48)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.7, 0.9, 1, 1)
+theme_override_font_sizes/font_size = 22
+text = "CONTINUE"
+
+[node name="SettingsButton" type="Button" parent="Menu" unique_id=1608275186]
+custom_minimum_size = Vector2(260, 48)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.75, 0.95, 1)
+theme_override_font_sizes/font_size = 22
+text = "SETTINGS"
+
+[node name="QuitButton" type="Button" parent="Menu" unique_id=752975818]
+custom_minimum_size = Vector2(260, 48)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.75, 1, 1, 1)
+theme_override_font_sizes/font_size = 22
+text = "QUIT GAME"
+
+[node name="StatusLabel" type="Label" parent="." unique_id=584954879]
+layout_mode = 0
+offset_left = 250.0
+offset_top = 490.0
+offset_right = 710.0
+offset_bottom = 520.0
+theme_override_colors/font_color = Color(1, 0.6, 0.85, 1)
+theme_override_font_sizes/font_size = 16
+horizontal_alignment = 1
+
+[node name="SettingsPanel" type="Panel" parent="." unique_id=1878992840]
+layout_mode = 0
+offset_left = 280.0
+offset_top = 175.0
+offset_right = 680.0
+offset_bottom = 450.0
+
+[node name="Title" type="Label" parent="SettingsPanel" unique_id=252449760]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 18.0
+offset_right = 376.0
+offset_bottom = 52.0
+theme_override_font_sizes/font_size = 24
+text = "SETTINGS"
+horizontal_alignment = 1
+
+[node name="VolumeLabel" type="Label" parent="SettingsPanel" unique_id=1091486759]
+layout_mode = 0
+offset_left = 32.0
+offset_top = 75.0
+offset_right = 180.0
+offset_bottom = 105.0
+text = "MASTER VOLUME"
+
+[node name="MasterVolume" type="HSlider" parent="SettingsPanel" unique_id=2131318142]
+layout_mode = 0
+offset_left = 185.0
+offset_top = 75.0
+offset_right = 360.0
+offset_bottom = 105.0
+value = 0.6
+step = 0.01
+
+[node name="LanguageLabel" type="Label" parent="SettingsPanel" unique_id=348112109]
+layout_mode = 0
+offset_left = 32.0
+offset_top = 115.0
+offset_right = 180.0
+offset_bottom = 145.0
+text = "LANGUAGE"
+
+[node name="LanguageOption" type="OptionButton" parent="SettingsPanel" unique_id=348112110]
+layout_mode = 0
+offset_left = 185.0
+offset_top = 110.0
+offset_right = 360.0
+offset_bottom = 148.0
+
+[node name="CloseButton" type="Button" parent="SettingsPanel" unique_id=1908732565]
+layout_mode = 0
+offset_left = 120.0
+offset_top = 165.0
+offset_right = 280.0
+offset_bottom = 210.0
+theme_override_font_sizes/font_size = 18
+text = "CLOSE"
+
+[connection signal="pressed" from="Menu/NewGameButton" to="." method="_on_new_game_button_pressed"]
+[connection signal="pressed" from="Menu/ContinueButton" to="." method="_on_continue_button_pressed"]
+[connection signal="pressed" from="Menu/SettingsButton" to="." method="_on_settings_button_pressed"]
+[connection signal="pressed" from="Menu/QuitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="value_changed" from="SettingsPanel/MasterVolume" to="." method="_on_master_volume_value_changed"]
+[connection signal="item_selected" from="SettingsPanel/LanguageOption" to="." method="_on_language_option_item_selected"]
+[connection signal="pressed" from="SettingsPanel/CloseButton" to="." method="_on_close_button_pressed"]

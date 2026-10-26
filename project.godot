@@ -1,0 +1,44 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[application]
+
+config/name="Neon Rush"
+run/main_scene="res://MainMenu.tscn"
+config/features=PackedStringArray("4.7", "Forward Plus")
+config/icon="res://icon.svg"
+
+[autoload]
+
+Locale="*res://locale.gd"
+
+[display]
+
+window/size/viewport_width=960
+window/size/viewport_height=540
+window/stretch/mode="canvas_items"
+window/stretch/aspect="expand"
+
+[input]
+
+ui_accept={
+"deadzone": 0.5,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":4194309,"physical_keycode":4194309,"key_label":4194309,"unicode":13,"location":0,"echo":false,"script":null)
+]
+}
+
+[physics]
+
+3d/physics_engine="Jolt Physics"
+
+[rendering]
+
+textures/canvas_textures/default_texture_filter=0
+rendering_device/driver.windows="d3d12"
